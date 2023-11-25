@@ -49,7 +49,7 @@ let workHtml = (random, categories) => {
   <a id="clickMe" href="#" class="btn btn-primary">Click for Random Jokes</a>
   <a id="refresh" href="#" class="btn btn-secondary">Rand<i class="bi bi-arrow-clockwise"></i>m</a>
 </div>
-<div class="card-footer text-body-secondary">
+<div id="updateTime" class="card-footer text-body-secondary">
   ${random.updated_at}
 </div>
 </div>`;
@@ -72,6 +72,8 @@ let workHtml = (random, categories) => {
   selClicMe.addEventListener("click", () => {
     urlFetch().then(
       ({ random }) => {
+        let updateTime = document.getElementById("updateTime");
+        updateTime.innerText = random.updated_at;
         let seletHeadingCont = document.getElementById("headingCont")
         seletHeadingCont.innerText = random.value;
         console.log(random.value);
@@ -97,6 +99,8 @@ let genButtonClickme = async (data) => {
   try {
     let urlSelCat = await fetch(data3url)
     let data = await urlSelCat.json();
+    let updateTime = document.getElementById("updateTime");
+        updateTime.innerText = random.updated_at;
     let headingCont = document.getElementById("headingCont");
     headingCont.innerText = `${data.value}`;
     console.log(data.value);
