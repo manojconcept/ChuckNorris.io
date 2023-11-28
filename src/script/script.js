@@ -100,7 +100,7 @@ let genButtonClickme = async (data) => {
     let urlSelCat = await fetch(data3url)
     let data = await urlSelCat.json();
     let updateTime = document.getElementById("updateTime");
-        updateTime.innerText = random.updated_at;
+        updateTime.innerText = data.updated_at;
     let headingCont = document.getElementById("headingCont");
     headingCont.innerText = `${data.value}`;
     console.log(data.value);
